@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi import APIRouter
 from ask_llm import retrieval
 import os
@@ -9,9 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI()
-
-origins = os.getenv("ORIGINS").split(",")
-
+ 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -20,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-router = APIRouter()
+# router = APIRouter()
 
 @app.get("/")
 async def root():

@@ -19,7 +19,7 @@ const AskLeafy = () => {
     setLoading(true);
 
     console.log("Asking Leafy:", question);
-    const apiUrl = process.env.NEXT_PUBLIC_ASK_LEAFY_API_URL;
+    const apiUrl = "http://127.0.0.1:8000/askTheLlm";
 
     try {
       const response = await axios.post(
@@ -57,6 +57,10 @@ const AskLeafy = () => {
     );
   };
 
+  const createMarkup = (content) => {
+    return { __html: 'First &middot; Second' };
+  }
+
   return (
     <div className={styles.content}>
       <div className={styles.chat}>
@@ -69,7 +73,7 @@ const AskLeafy = () => {
             onChange={handleChange}
             placeholder="Type your question here..."
           />
-           <button
+          <button
             className={styles.askBtn}
             onClick={handleAsk}
             disabled={loading} // Disable button while loading
@@ -99,7 +103,7 @@ const AskLeafy = () => {
               <div className={styles.referenceCards} key={index}>
                 <div className={styles.imgSection}>
                   <img
-                    src={`/photos/${doc.metadata.photo}`}
+                    src={`/photos/${doc.photo}`}
                     alt="Claim photo"
                   />
                 </div>
@@ -109,21 +113,21 @@ const AskLeafy = () => {
                     <div className={styles.fieldWrapper}>
                       <p className={styles.fieldTitle}>Customer ID:</p>
                       <p className={styles.fieldContent}>
-                        {doc.metadata.customerID}
+                        {doc.customerID}
                       </p>
                     </div>
 
                     <div className={styles.fieldWrapper}>
                       <p className={styles.fieldTitle}>Claim Date:</p>
                       <p className={styles.fieldContent}>
-                        {doc.metadata.claimFNOLDate}
+                        {doc.claimFNOLDate}
                       </p>
                     </div>
 
                     <div className={styles.fieldWrapper}>
                       <p className={styles.fieldTitle}>Loss Amount:</p>
                       <p className={styles.lossAmount}>
-                        ${doc.metadata.totalLossAmount}
+                        ${doc.totalLossAmount}
                       </p>
                     </div>
                   </div>
