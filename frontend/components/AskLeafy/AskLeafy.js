@@ -134,7 +134,7 @@ const AskLeafy = () => {
 
                   <div className={styles.lowerSection}>
                     <p className={styles.fieldTitle}>Claim Description:</p>
-                    <p className={styles.fieldContent}>{doc.page_content}</p>
+                    <p className={styles.fieldContent}>{doc.claimDescription}</p>
                   </div>
                 </div>
               </div>
